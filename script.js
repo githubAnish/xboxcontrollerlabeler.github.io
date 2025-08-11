@@ -54,6 +54,9 @@ function init() {
         }
     });
 
+    // Position labels and draw connecting lines
+    positionLabelsAndLines();
+
     // Add event listeners to all label inputs
     setupInputEventListeners();
 
@@ -62,6 +65,45 @@ function init() {
 
     // Add visual feedback animations
     setupVisualEffects();
+}
+
+// Position labels and draw connecting lines
+function positionLabelsAndLines() {
+    const controllerImage = document.getElementById('controllerImage');
+    const labelContainers = document.querySelectorAll('.label-container');
+    
+    labelContainers.forEach(container => {
+        const targetX = parseInt(container.getAttribute('data-target-x'));
+        const targetY = parseInt(container.getAttribute('data-target-y'));
+        const labelX = parseInt(container.getAttribute('data-label-x'));
+        const labelY = parseInt(container.getAttribute('data-label-y'));
+        
+        // Position the label container
+        container.style.left = labelX + '%';
+        container.style.top = labelY + '%';
+        
+        // Calculate line properties
+        const deltaX = targetX - labelX;
+        const deltaY = targetY - labelY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        // Position and style the connecting line
+        const line = container.querySelector('.connector-line');
+        line.style.width = distance + '%';
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.left = '0';
+        line.style.top = '50%';
+        
+        // Position the arrow at the end of the line
+        const arrow = container.querySelector('.arrow');
+        const arrowOffsetX = (deltaX / distance) * distance;
+        const arrowOffsetY = (deltaY / distance) * distance;
+        
+        arrow.style.left = arrowOffsetX + '%';
+        arrow.style.top = arrowOffsetY + '%';
+        arrow.style.transform = `translate(-50%, -50%)`;
+    });
 }
 
 // Set up event listeners for input fields
@@ -249,7 +291,8 @@ function setupResponsiveLayout() {
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            // Labels will automatically adjust due to percentage-based positioning
+            // Recalculate line positions on resize
+            positionLabelsAndLines();
             console.log('Layout adjusted for new window size');
         }, 250);
     });

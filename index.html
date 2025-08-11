@@ -15,77 +15,105 @@
         </header>
 
         <div class="controller-container">
-            <img src="hello.jpg" alt="Xbox Controller" class="controller-image" id="controllerImage">
+            <img src="attached_assets/Screenshot 2025-08-11 163512_1754949339862.png" alt="Xbox Controller" class="controller-image" id="controllerImage">
             
-            <!-- Labels with arrows -->
-            <div class="label-container" data-id="leftStick" style="left: 25%; top: 70%;">
+            <!-- Labels with connecting lines and arrows -->
+            <!-- Left Trigger -->
+            <div class="label-container" data-id="leftTrigger" data-target-x="30" data-target-y="20" data-label-x="15" data-label-y="8">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-bottom-right"></div>
-                <input type="text" class="label-input" value="Left Analog Stick" placeholder="Enter label...">
+                <input type="text" class="label-input" value="Left Trigger" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="rightStick" style="left: 75%; top: 85%;">
+            <!-- Right Trigger -->
+            <div class="label-container" data-id="rightTrigger" data-target-x="70" data-target-y="20" data-label-x="85" data-label-y="8">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-bottom-left"></div>
-                <input type="text" class="label-input" value="Right Analog Stick" placeholder="Enter label...">
+                <input type="text" class="label-input" value="Right Trigger" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="dpad" style="left: 15%; top: 55%;">
-                <div class="arrow arrow-right"></div>
-                <input type="text" class="label-input" value="D-Pad" placeholder="Enter label...">
+            <!-- Left Bumper -->
+            <div class="label-container" data-id="leftBumper" data-target-x="32" data-target-y="30" data-label-x="20" data-label-y="20">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-right"></div>
+                <input type="text" class="label-input" value="Left Bumper" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="aButton" style="left: 85%; top: 55%;">
+            <!-- Right Bumper -->
+            <div class="label-container" data-id="rightBumper" data-target-x="68" data-target-y="30" data-label-x="80" data-label-y="20">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-left"></div>
+                <input type="text" class="label-input" value="Right Bumper" placeholder="Enter label...">
+            </div>
+
+            <!-- View Button -->
+            <div class="label-container" data-id="viewButton" data-target-x="40" data-target-y="43" data-label-x="25" data-label-y="35">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-right"></div>
+                <input type="text" class="label-input" value="View Button" placeholder="Enter label...">
+            </div>
+
+            <!-- Menu Button -->
+            <div class="label-container" data-id="menuButton" data-target-x="60" data-target-y="43" data-label-x="75" data-label-y="35">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-left"></div>
+                <input type="text" class="label-input" value="Menu Button" placeholder="Enter label...">
+            </div>
+
+            <!-- Xbox Button -->
+            <div class="label-container" data-id="xboxButton" data-target-x="50" data-target-y="48" data-label-x="50" data-label-y="60">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-top"></div>
+                <input type="text" class="label-input" value="Xbox Button" placeholder="Enter label...">
+            </div>
+
+            <!-- Y Button -->
+            <div class="label-container" data-id="yButton" data-target-x="75" data-target-y="42" data-label-x="90" data-label-y="32">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-left"></div>
+                <input type="text" class="label-input" value="Y Button" placeholder="Enter label...">
+            </div>
+
+            <!-- X Button -->
+            <div class="label-container" data-id="xButton" data-target-x="70" data-target-y="50" data-label-x="88" data-label-y="42">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-left"></div>
+                <input type="text" class="label-input" value="X Button" placeholder="Enter label...">
+            </div>
+
+            <!-- A Button -->
+            <div class="label-container" data-id="aButton" data-target-x="75" data-target-y="58" data-label-x="90" data-label-y="52">
+                <div class="connector-line"></div>
+                <div class="arrow arrow-bottom-left"></div>
                 <input type="text" class="label-input" value="A Button" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="bButton" style="left: 90%; top: 50%;">
+            <!-- B Button -->
+            <div class="label-container" data-id="bButton" data-target-x="80" data-target-y="50" data-label-x="95" data-label-y="50">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-left"></div>
                 <input type="text" class="label-input" value="B Button" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="xButton" style="left: 80%; top: 50%;">
+            <!-- D-Pad -->
+            <div class="label-container" data-id="dpad" data-target-x="30" data-target-y="60" data-label-x="10" data-label-y="55">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-right"></div>
-                <input type="text" class="label-input" value="X Button" placeholder="Enter label...">
+                <input type="text" class="label-input" value="D-Pad" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="yButton" style="left: 85%; top: 45%;">
-                <div class="arrow arrow-top"></div>
-                <input type="text" class="label-input" value="Y Button" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="leftBumper" style="left: 25%; top: 25%;">
-                <div class="arrow arrow-top"></div>
-                <input type="text" class="label-input" value="Left Bumper" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="rightBumper" style="left: 75%; top: 25%;">
-                <div class="arrow arrow-top"></div>
-                <input type="text" class="label-input" value="Right Bumper" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="leftTrigger" style="left: 20%; top: 15%;">
+            <!-- Left Analog Stick -->
+            <div class="label-container" data-id="leftStick" data-target-x="38" data-target-y="72" data-label-x="20" data-label-y="85">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-top-right"></div>
-                <input type="text" class="label-input" value="Left Trigger" placeholder="Enter label...">
+                <input type="text" class="label-input" value="Left Analog Stick" placeholder="Enter label...">
             </div>
 
-            <div class="label-container" data-id="rightTrigger" style="left: 80%; top: 15%;">
+            <!-- Right Analog Stick -->
+            <div class="label-container" data-id="rightStick" data-target-x="62" data-target-y="85" data-label-x="80" data-label-y="95">
+                <div class="connector-line"></div>
                 <div class="arrow arrow-top-left"></div>
-                <input type="text" class="label-input" value="Right Trigger" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="menuButton" style="left: 65%; top: 35%;">
-                <div class="arrow arrow-top-right"></div>
-                <input type="text" class="label-input" value="Menu Button" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="viewButton" style="left: 35%; top: 35%;">
-                <div class="arrow arrow-top-left"></div>
-                <input type="text" class="label-input" value="View Button" placeholder="Enter label...">
-            </div>
-
-            <div class="label-container" data-id="xboxButton" style="left: 50%; top: 40%;">
-                <div class="arrow arrow-bottom"></div>
-                <input type="text" class="label-input" value="Xbox Button" placeholder="Enter label...">
+                <input type="text" class="label-input" value="Right Analog Stick" placeholder="Enter label...">
             </div>
         </div>
 

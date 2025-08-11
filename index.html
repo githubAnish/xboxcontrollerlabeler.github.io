@@ -7,57 +7,97 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Xbox Controller Diagram</h1>
-        <div class="controller-wrapper">
-            <img src="hello.jpg" alt="Xbox Controller" class="controller-image">
+    <h1>Xbox Controller Diagram</h1>
 
-            <svg class="overlay">
-                <!-- Y Button -->
-                <line x1="550" y1="160" x2="650" y2="100" />
-                <text x="660" y="105">Y Button</text>
+    <div class="controller-wrapper">
+        <img src="hello.jpg" alt="Xbox Controller" class="controller-image">
 
-                <!-- B Button -->
-                <line x1="580" y1="200" x2="680" y2="160" />
-                <text x="690" y="165">B Button</text>
+        <svg class="overlay" viewBox="0 0 722 504" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="2.5" orient="auto">
+                    <path d="M0,0 L0,5 L7,2.5 z" fill="white" />
+                </marker>
+            </defs>
 
-                <!-- A Button -->
-                <line x1="550" y1="240" x2="650" y2="280" />
-                <text x="660" y="285">A Button</text>
+            <!-- Y Button -->
+            <line x1="485" y1="145" x2="600" y2="80" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(610, 70)">
+                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Y Button</text>
+            </g>
 
-                <!-- X Button -->
-                <line x1="520" y1="200" x2="620" y2="240" />
-                <text x="630" y="245">X Button</text>
+            <!-- B Button -->
+            <line x1="505" y1="170" x2="610" y2="140" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(620, 130)">
+                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">B Button</text>
+            </g>
 
-                <!-- D-Pad -->
-                <line x1="320" y1="240" x2="220" y2="280" />
-                <text x="100" y="285">D-Pad</text>
+            <!-- A Button -->
+            <line x1="485" y1="200" x2="600" y2="250" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(610, 240)">
+                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">A Button</text>
+            </g>
 
-                <!-- Left Stick -->
-                <line x1="320" y1="160" x2="200" y2="140" />
-                <text x="80" y="145">Left Stick</text>
+            <!-- X Button -->
+            <line x1="465" y1="170" x2="570" y2="210" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(580, 200)">
+                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">X Button</text>
+            </g>
 
-                <!-- Right Stick -->
-                <line x1="480" y1="280" x2="580" y2="340" />
-                <text x="590" y="345">Right Stick</text>
+            <!-- D-Pad -->
+            <line x1="300" y1="200" x2="200" y2="260" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(120, 250)">
+                <rect class="label-bg" width="60" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">D-Pad</text>
+            </g>
 
-                <!-- Menu Button -->
-                <line x1="430" y1="140" x2="520" y2="80" />
-                <text x="530" y="85">Menu Button</text>
+            <!-- Left Stick -->
+            <line x1="270" y1="145" x2="150" y2="140" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(50, 130)">
+                <rect class="label-bg" width="75" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Left Stick</text>
+            </g>
 
-                <!-- View Button -->
-                <line x1="370" y1="140" x2="280" y2="80" />
-                <text x="150" y="85">View Button</text>
+            <!-- Right Stick -->
+            <line x1="420" y1="230" x2="520" y2="300" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(530, 290)">
+                <rect class="label-bg" width="80" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Right Stick</text>
+            </g>
 
-                <!-- Left Bumper -->
-                <line x1="300" y1="60" x2="200" y2="20" />
-                <text x="80" y="25">Left Bumper</text>
+            <!-- Menu Button -->
+            <line x1="375" y1="130" x2="460" y2="80" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(470, 70)">
+                <rect class="label-bg" width="95" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Menu Button</text>
+            </g>
 
-                <!-- Right Bumper -->
-                <line x1="500" y1="60" x2="600" y2="20" />
-                <text x="610" y="25">Right Bumper</text>
-            </svg>
-        </div>
+            <!-- View Button -->
+            <line x1="335" y1="130" x2="250" y2="80" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(140, 70)">
+                <rect class="label-bg" width="90" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">View Button</text>
+            </g>
+
+            <!-- Left Bumper -->
+            <line x1="260" y1="60" x2="160" y2="30" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(50, 20)">
+                <rect class="label-bg" width="100" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Left Bumper</text>
+            </g>
+
+            <!-- Right Bumper -->
+            <line x1="450" y1="60" x2="550" y2="30" class="arrow" marker-end="url(#arrow)" />
+            <g class="label-box" transform="translate(560, 20)">
+                <rect class="label-bg" width="105" height="20" rx="5" ry="5"></rect>
+                <text x="5" y="15" class="label-text">Right Bumper</text>
+            </g>
+        </svg>
     </div>
+
+    <script src="index.js"></script>
 </body>
 </html>

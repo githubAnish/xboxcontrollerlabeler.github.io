@@ -3,101 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xbox Controller Diagram</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Xbox Controller Labeler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .controller-container {
+            position: relative;
+            width: 100%;
+            max-width: 1440px; /* Max width to match user request */
+            aspect-ratio: 1440 / 575; /* Maintain the requested aspect ratio */
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+        }
+
+        .controller-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the image fits within the container without being cropped */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .label {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .arrow {
+            width: 1.5rem; /* Base width */
+            height: 2px;
+            background-color: #fff;
+            position: relative;
+            transform-origin: left center;
+        }
+
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid #fff;
+            transform: translateY(-50%);
+        }
+
+        .label.reverse-arrow {
+            flex-direction: row-reverse;
+        }
+
+        .label.reverse-arrow .arrow {
+            transform-origin: right center;
+        }
+
+        .label.reverse-arrow .arrow::after {
+            right: auto;
+            left: 0;
+            border-left: none;
+            border-right: 5px solid #fff;
+        }
+
+        .text-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            outline: none;
+            font-size: 0.875rem; /* Default font size */
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .text-input:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+        }
+    </style>
 </head>
-<body>
-    <h1>Xbox Controller Diagram</h1>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-8">
+    <div class="flex flex-col items-center w-full max-w-7xl">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-teal-400">Xbox Controller Labeler</h1>
 
-    <div class="controller-wrapper">
-        <img src="hello.jpg" alt="Xbox Controller" class="controller-image">
+        <div id="controller-labeler" class="relative w-full overflow-hidden rounded-xl shadow-2xl">
+            <!-- The controller image container. -->
+            <div class="controller-container">
+                <!-- Use an <img> tag for more reliable image loading -->
+                <img id="controller-image" class="controller-image" src="https://github.com/githubAnish/xboxcontrollerlabeler.github.io/blob/main/hello.jpg" alt="Xbox Controller">
+                <!-- Labels will be injected here by JavaScript -->
+            </div>
+        </div>
 
-        <svg class="overlay" viewBox="0 0 722 504" preserveAspectRatio="xMidYMid meet">
-            <defs>
-                <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="2.5" orient="auto">
-                    <path d="M0,0 L0,5 L7,2.5 z" fill="white" />
-                </marker>
-            </defs>
-
-            <!-- Y Button -->
-            <line x1="485" y1="145" x2="600" y2="80" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(610, 70)">
-                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Y Button</text>
-            </g>
-
-            <!-- B Button -->
-            <line x1="505" y1="170" x2="610" y2="140" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(620, 130)">
-                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">B Button</text>
-            </g>
-
-            <!-- A Button -->
-            <line x1="485" y1="200" x2="600" y2="250" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(610, 240)">
-                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">A Button</text>
-            </g>
-
-            <!-- X Button -->
-            <line x1="465" y1="170" x2="570" y2="210" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(580, 200)">
-                <rect class="label-bg" width="70" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">X Button</text>
-            </g>
-
-            <!-- D-Pad -->
-            <line x1="300" y1="200" x2="200" y2="260" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(120, 250)">
-                <rect class="label-bg" width="60" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">D-Pad</text>
-            </g>
-
-            <!-- Left Stick -->
-            <line x1="270" y1="145" x2="150" y2="140" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(50, 130)">
-                <rect class="label-bg" width="75" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Left Stick</text>
-            </g>
-
-            <!-- Right Stick -->
-            <line x1="420" y1="230" x2="520" y2="300" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(530, 290)">
-                <rect class="label-bg" width="80" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Right Stick</text>
-            </g>
-
-            <!-- Menu Button -->
-            <line x1="375" y1="130" x2="460" y2="80" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(470, 70)">
-                <rect class="label-bg" width="95" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Menu Button</text>
-            </g>
-
-            <!-- View Button -->
-            <line x1="335" y1="130" x2="250" y2="80" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(140, 70)">
-                <rect class="label-bg" width="90" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">View Button</text>
-            </g>
-
-            <!-- Left Bumper -->
-            <line x1="260" y1="60" x2="160" y2="30" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(50, 20)">
-                <rect class="label-bg" width="100" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Left Bumper</text>
-            </g>
-
-            <!-- Right Bumper -->
-            <line x1="450" y1="60" x2="550" y2="30" class="arrow" marker-end="url(#arrow)" />
-            <g class="label-box" transform="translate(560, 20)">
-                <rect class="label-bg" width="105" height="20" rx="5" ry="5"></rect>
-                <text x="5" y="15" class="label-text">Right Bumper</text>
-            </g>
-        </svg>
+        <div id="message-box" class="mt-8 p-4 bg-gray-800 text-sm text-center rounded-lg max-w-md hidden"></div>
     </div>
 
-    <script src="index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageContainer = document.querySelector('.controller-container');
+            const messageBox = document.getElementById('message-box');
+            const controllerImage = document.getElementById('controller-image');
+
+            // Data for each label: position is relative to the image container
+            const labelsData = [
+                { id: 'left-stick', label: 'Left Stick', x: 20, y: 55, arrowAngle: 155, reverse: true },
+                { id: 'd-pad', label: 'D-pad', x: 23, y: 70, arrowAngle: 180, reverse: true },
+                { id: 'view-button', label: 'View Button', x: 39, y: 45, arrowAngle: 180, reverse: true },
+                { id: 'xbox-button', label: 'Xbox Button', x: 49, y: 38, arrowAngle: 90, reverse: true },
+                { id: 'menu-button', label: 'Menu Button', x: 60, y: 45, arrowAngle: 0, reverse: false },
+                { id: 'a-button', label: 'A Button', x: 74, y: 68, arrowAngle: 25, reverse: false },
+                { id: 'b-button', label: 'B Button', x: 80, y: 62, arrowAngle: 10, reverse: false },
+                { id: 'x-button', label: 'X Button', x: 70, y: 62, arrowAngle: -10, reverse: false },
+                { id: 'y-button', label: 'Y Button', x: 77, y: 56, arrowAngle: 0, reverse: false },
+                { id: 'right-stick', label: 'Right Stick', x: 70, y: 75, arrowAngle: -10, reverse: false },
+                { id: 'left-bumper', label: 'Left Bumper', x: 18, y: 15, arrowAngle: -135, reverse: true, textWidth: '80px' },
+                { id: 'right-bumper', label: 'Right Bumper', x: 82, y: 15, arrowAngle: 135, reverse: false, textWidth: '80px' },
+                { id: 'left-trigger', label: 'Left Trigger', x: 25, y: -2, arrowAngle: -90, reverse: true, textWidth: '80px' },
+                { id: 'right-trigger', label: 'Right Trigger', x: 75, y: -2, arrowAngle: -90, reverse: false, textWidth: '80px' },
+            ];
+
+            function showMessage(text, isError = false) {
+                messageBox.textContent = text;
+                messageBox.classList.remove('hidden');
+                if (isError) {
+                    messageBox.classList.remove('bg-gray-800');
+                    messageBox.classList.add('bg-red-800');
+                } else {
+                    messageBox.classList.remove('bg-red-800');
+                    messageBox.classList.add('bg-gray-800');
+                }
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 3000);
+            }
+
+            function createLabel(data) {
+                const labelDiv = document.createElement('div');
+                labelDiv.classList.add('label');
+                labelDiv.style.left = `${data.x}%`;
+                labelDiv.style.top = `${data.y}%`;
+
+                const arrowDiv = document.createElement('div');
+                arrowDiv.classList.add('arrow');
+                arrowDiv.style.transform = `rotate(${data.arrowAngle}deg)`;
+
+                const textInput = document.createElement('input');
+                textInput.type = 'text';
+                textInput.classList.add('text-input');
+                textInput.value = data.label;
+                textInput.style.width = data.textWidth || '120px';
+
+                if (data.reverse) {
+                    labelDiv.classList.add('reverse-arrow');
+                    labelDiv.appendChild(textInput);
+                    labelDiv.appendChild(arrowDiv);
+                } else {
+                    labelDiv.appendChild(arrowDiv);
+                    labelDiv.appendChild(textInput);
+                }
+                return labelDiv;
+            }
+            
+            // Wait for the image to load before rendering labels
+            controllerImage.onload = () => {
+                labelsData.forEach(data => {
+                    const labelElement = createLabel(data);
+                    imageContainer.appendChild(labelElement);
+                });
+                // Adjust font size after image and labels are loaded
+                adjustFontSize();
+            };
+
+            controllerImage.onerror = () => {
+                showMessage("Could not load the controller image. Please check the image URL.", true);
+            };
+
+            function adjustFontSize() {
+                const containerWidth = imageContainer.offsetWidth;
+                const fontSize = Math.max(12, containerWidth / 1440 * 16);
+                document.querySelectorAll('.text-input').forEach(input => {
+                    input.style.fontSize = `${fontSize}px`;
+                });
+            }
+
+            window.addEventListener('resize', adjustFontSize);
+            // If the image is already loaded (from cache), trigger the onload logic
+            if (controllerImage.complete) {
+                controllerImage.onload();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+}
+
+.controller-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.controller-image {
+    max-width: 600px;
+    height: auto;
+}
+
+.label {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+}

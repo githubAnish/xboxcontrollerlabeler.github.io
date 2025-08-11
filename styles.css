@@ -1,0 +1,310 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #0a0a0a 100%);
+    color: white;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header p {
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.4);
+}
+
+/* Controller container */
+.controller-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.controller-image {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Label containers */
+.label-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.label-input {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.label-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.label-input:hover {
+    border-color: #60a5fa;
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.02);
+}
+
+/* Arrow styles */
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.arrow-top-left {
+    top: 100%;
+    right: 0.5rem;
+    border-left: 12px solid transparent;
+    border-right: 12px solid rgba(255, 255, 255, 0.95);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.arrow-top-right {
+    top: 100%;
+    left: 0.5rem;
+    border-left: 12px solid rgba(255, 255, 255, 0.95);
+    border-right: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.arrow-bottom-left {
+    bottom: 100%;
+    right: 0.5rem;
+    border-left: 12px solid transparent;
+    border-right: 12px solid rgba(255, 255, 255, 0.95);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.arrow-bottom-right {
+    bottom: 100%;
+    left: 0.5rem;
+    border-left: 12px solid rgba(255, 255, 255, 0.95);
+    border-right: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.arrow-left {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+.arrow-right {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+.arrow-top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+.arrow-bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+/* Instructions */
+.instructions {
+    background: rgba(45, 45, 45, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.instructions h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.instructions ul {
+    list-style: none;
+    color: #b0b0b0;
+}
+
+.instructions li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.instructions li::before {
+    content: "•";
+    color: #2563eb;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .label-input {
+        font-size: 0.75rem;
+        min-width: 100px;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .instructions {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .label-input {
+        font-size: 0.7rem;
+        min-width: 80px;
+        padding: 0.3rem 0.5rem;
+    }
+    
+    .arrow-top-left,
+    .arrow-top-right,
+    .arrow-bottom-left,
+    .arrow-bottom-right,
+    .arrow-left,
+    .arrow-right,
+    .arrow-top,
+    .arrow-bottom {
+        border-width: 8px;
+    }
+}
+
+/* Animation effects */
+.label-container {
+    transition: all 0.3s ease;
+}
+
+.label-container:hover {
+    z-index: 20;
+}
+
+.label-container:hover .label-input {
+    transform: scale(1.05);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.label-container {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.label-container:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.label-container:nth-child(even) {
+    animation-delay: 0.2s;
+}

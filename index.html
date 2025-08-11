@@ -4,213 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xbox Controller Labeler</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            box-sizing: border-box;
-        }
-
-        .controller-container {
-            position: relative;
-            width: 100%;
-            max-width: 1440px; /* Max width to match user request */
-            aspect-ratio: 1440 / 575; /* Maintain the requested aspect ratio */
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
-        }
-
-        .controller-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Ensure the image fits within the container without being cropped */
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .label {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-
-        .arrow {
-            width: 1.5rem; /* Base width */
-            height: 2px;
-            background-color: #fff;
-            position: relative;
-            transform-origin: left center;
-        }
-
-        .arrow::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: 0;
-            height: 0;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-left: 5px solid #fff;
-            transform: translateY(-50%);
-        }
-
-        .label.reverse-arrow {
-            flex-direction: row-reverse;
-        }
-
-        .label.reverse-arrow .arrow {
-            transform-origin: right center;
-        }
-
-        .label.reverse-arrow .arrow::after {
-            right: auto;
-            left: 0;
-            border-left: none;
-            border-right: 5px solid #fff;
-        }
-
-        .text-input {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.5rem;
-            outline: none;
-            font-size: 0.875rem; /* Default font size */
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-        }
-
-        .text-input:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: #ffffff;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-8">
-    <div class="flex flex-col items-center w-full max-w-7xl">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-teal-400">Xbox Controller Labeler</h1>
+<body>
+    <div class="container">
+        <header>
+            <h1>Xbox Controller Labeler</h1>
+            <p>Click on any label to customize the name of each controller part. Your changes are automatically saved.</p>
+            <button id="resetButton" class="reset-btn">Reset to Default Labels</button>
+        </header>
 
-        <div id="controller-labeler" class="relative w-full overflow-hidden rounded-xl shadow-2xl">
-            <!-- The controller image container. -->
-            <div class="controller-container">
-                <!-- Use an <img> tag for more reliable image loading -->
-                <img id="controller-image" class="controller-image" src="hello.jpg" alt="Xbox Controller">
-                <!-- Labels will be injected here by JavaScript -->
+        <div class="controller-container">
+            <img src="attached_assets/Screenshot 2025-08-11 163512_1754949339862.png" alt="Xbox Controller" class="controller-image" id="controllerImage">
+            
+            <!-- Labels with arrows -->
+            <div class="label-container" data-id="leftStick" style="left: 25%; top: 70%;">
+                <div class="arrow arrow-bottom-right"></div>
+                <input type="text" class="label-input" value="Left Analog Stick" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="rightStick" style="left: 75%; top: 85%;">
+                <div class="arrow arrow-bottom-left"></div>
+                <input type="text" class="label-input" value="Right Analog Stick" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="dpad" style="left: 15%; top: 55%;">
+                <div class="arrow arrow-right"></div>
+                <input type="text" class="label-input" value="D-Pad" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="aButton" style="left: 85%; top: 55%;">
+                <div class="arrow arrow-left"></div>
+                <input type="text" class="label-input" value="A Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="bButton" style="left: 90%; top: 50%;">
+                <div class="arrow arrow-left"></div>
+                <input type="text" class="label-input" value="B Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="xButton" style="left: 80%; top: 50%;">
+                <div class="arrow arrow-right"></div>
+                <input type="text" class="label-input" value="X Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="yButton" style="left: 85%; top: 45%;">
+                <div class="arrow arrow-top"></div>
+                <input type="text" class="label-input" value="Y Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="leftBumper" style="left: 25%; top: 25%;">
+                <div class="arrow arrow-top"></div>
+                <input type="text" class="label-input" value="Left Bumper" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="rightBumper" style="left: 75%; top: 25%;">
+                <div class="arrow arrow-top"></div>
+                <input type="text" class="label-input" value="Right Bumper" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="leftTrigger" style="left: 20%; top: 15%;">
+                <div class="arrow arrow-top-right"></div>
+                <input type="text" class="label-input" value="Left Trigger" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="rightTrigger" style="left: 80%; top: 15%;">
+                <div class="arrow arrow-top-left"></div>
+                <input type="text" class="label-input" value="Right Trigger" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="menuButton" style="left: 65%; top: 35%;">
+                <div class="arrow arrow-top-right"></div>
+                <input type="text" class="label-input" value="Menu Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="viewButton" style="left: 35%; top: 35%;">
+                <div class="arrow arrow-top-left"></div>
+                <input type="text" class="label-input" value="View Button" placeholder="Enter label...">
+            </div>
+
+            <div class="label-container" data-id="xboxButton" style="left: 50%; top: 40%;">
+                <div class="arrow arrow-bottom"></div>
+                <input type="text" class="label-input" value="Xbox Button" placeholder="Enter label...">
             </div>
         </div>
 
-        <div id="message-box" class="mt-8 p-4 bg-gray-800 text-sm text-center rounded-lg max-w-md hidden"></div>
+        <div class="instructions">
+            <h2>How to Use</h2>
+            <ul>
+                <li>Click on any label to edit it</li>
+                <li>Press Enter to save your changes or Escape to cancel</li>
+                <li>Labels are automatically saved to your browser's local storage</li>
+                <li>Use the "Reset to Default Labels" button to restore original names</li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const imageContainer = document.querySelector('.controller-container');
-            const messageBox = document.getElementById('message-box');
-            const controllerImage = document.getElementById('controller-image');
-
-            // Data for each label: position is relative to the image container
-            const labelsData = [
-                { id: 'left-stick', label: 'Left Stick', x: 25, y: 55, arrowAngle: 180, reverse: true },
-                { id: 'd-pad', label: 'D-pad', x: 20, y: 75, arrowAngle: 180, reverse: true },
-                { id: 'view-button', label: 'View Button', x: 42, y: 47, arrowAngle: 180, reverse: true },
-                { id: 'xbox-button', label: 'Xbox Button', x: 50, y: 35, arrowAngle: 90, reverse: true },
-                { id: 'menu-button', label: 'Menu Button', x: 57, y: 47, arrowAngle: 0, reverse: false },
-                { id: 'a-button', label: 'A Button', x: 79, y: 68, arrowAngle: 25, reverse: false },
-                { id: 'b-button', label: 'B Button', x: 80, y: 58, arrowAngle: 10, reverse: false },
-                { id: 'x-button', label: 'X Button', x: 73, y: 58, arrowAngle: -10, reverse: false },
-                { id: 'y-button', label: 'Y Button', x: 74, y: 48, arrowAngle: 0, reverse: false },
-                { id: 'right-stick', label: 'Right Stick', x: 75, y: 75, arrowAngle: -10, reverse: false },
-                { id: 'left-bumper', label: 'Left Bumper', x: 18, y: 15, arrowAngle: -135, reverse: true, textWidth: '80px' },
-                { id: 'right-bumper', label: 'Right Bumper', x: 82, y: 15, arrowAngle: 135, reverse: false, textWidth: '80px' },
-                { id: 'left-trigger', label: 'Left Trigger', x: 25, y: -2, arrowAngle: -90, reverse: true, textWidth: '80px' },
-                { id: 'right-trigger', label: 'Right Trigger', x: 75, y: -2, arrowAngle: -90, reverse: false, textWidth: '80px' },
-            ];
-
-            function showMessage(text, isError = false) {
-                messageBox.textContent = text;
-                messageBox.classList.remove('hidden');
-                if (isError) {
-                    messageBox.classList.remove('bg-gray-800');
-                    messageBox.classList.add('bg-red-800');
-                } else {
-                    messageBox.classList.remove('bg-red-800');
-                    messageBox.classList.add('bg-gray-800');
-                }
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                }, 3000);
-            }
-
-            function createLabel(data) {
-                const labelDiv = document.createElement('div');
-                labelDiv.classList.add('label');
-                labelDiv.style.left = `${data.x}%`;
-                labelDiv.style.top = `${data.y}%`;
-
-                const arrowDiv = document.createElement('div');
-                arrowDiv.classList.add('arrow');
-                arrowDiv.style.transform = `rotate(${data.arrowAngle}deg)`;
-
-                const textInput = document.createElement('input');
-                textInput.type = 'text';
-                textInput.classList.add('text-input');
-                textInput.value = data.label;
-                textInput.style.width = data.textWidth || '120px';
-
-                if (data.reverse) {
-                    labelDiv.classList.add('reverse-arrow');
-                    labelDiv.appendChild(textInput);
-                    labelDiv.appendChild(arrowDiv);
-                } else {
-                    labelDiv.appendChild(arrowDiv);
-                    labelDiv.appendChild(textInput);
-                }
-                return labelDiv;
-            }
-            
-            // Wait for the image to load before rendering labels
-            controllerImage.onload = () => {
-                labelsData.forEach(data => {
-                    const labelElement = createLabel(data);
-                    imageContainer.appendChild(labelElement);
-                });
-                // Adjust font size after image and labels are loaded
-                adjustFontSize();
-            };
-
-            controllerImage.onerror = () => {
-                showMessage("Could not load the controller image. Please check the image URL.", true);
-            };
-
-            function adjustFontSize() {
-                const containerWidth = imageContainer.offsetWidth;
-                const fontSize = Math.max(12, containerWidth / 1440 * 16);
-                document.querySelectorAll('.text-input').forEach(input => {
-                    input.style.fontSize = `${fontSize}px`;
-                });
-            }
-
-            window.addEventListener('resize', adjustFontSize);
-            // If the image is already loaded (from cache), trigger the onload logic
-            if (controllerImage.complete) {
-                controllerImage.onload();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

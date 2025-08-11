@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xbox Controller Labels</title>
+    <title>Xbox Controller Diagram</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
-        <h1>Xbox Controller</h1>
+        <h1>Xbox Controller Diagram</h1>
         <div class="controller-wrapper">
             <img src="hello.jpg" alt="Xbox Controller" class="controller-image">
 
-            <!-- Example Labels -->
-            <div class="label" style="top: 15%; left: 65%;" data-label="Y Button"></div>
-            <div class="label" style="top: 25%; left: 70%;" data-label="B Button"></div>
-            <div class="label" style="top: 35%; left: 65%;" data-label="A Button"></div>
-            <div class="label" style="top: 25%; left: 60%;" data-label="X Button"></div>
+            <svg class="overlay">
+                <!-- Y Button -->
+                <line x1="550" y1="160" x2="650" y2="100" />
+                <text x="660" y="105">Y Button</text>
 
-            <div class="label" style="top: 40%; left: 40%;" data-label="D-Pad"></div>
-            <div class="label" style="top: 15%; left: 40%;" data-label="Left Stick"></div>
-            <div class="label" style="top: 15%; left: 50%;" data-label="Right Stick"></div>
+                <!-- B Button -->
+                <line x1="580" y1="200" x2="680" y2="160" />
+                <text x="690" y="165">B Button</text>
 
-            <div class="label" style="top: 5%; left: 45%;" data-label="Menu Button"></div>
-            <div class="label" style="top: 5%; left: 40%;" data-label="View Button"></div>
-            <div class="label" style="top: 0%; left: 30%;" data-label="Left Bumper"></div>
-            <div class="label" style="top: 0%; left: 60%;" data-label="Right Bumper"></div>
+                <!-- A Button -->
+                <line x1="550" y1="240" x2="650" y2="280" />
+                <text x="660" y="285">A Button</text>
+
+                <!-- X Button -->
+                <line x1="520" y1="200" x2="620" y2="240" />
+                <text x="630" y="245">X Button</text>
+
+                <!-- D-Pad -->
+                <line x1="320" y1="240" x2="220" y2="280" />
+                <text x="100" y="285">D-Pad</text>
+
+                <!-- Left Stick -->
+                <line x1="320" y1="160" x2="200" y2="140" />
+                <text x="80" y="145">Left Stick</text>
+
+                <!-- Right Stick -->
+                <line x1="480" y1="280" x2="580" y2="340" />
+                <text x="590" y="345">Right Stick</text>
+
+                <!-- Menu Button -->
+                <line x1="430" y1="140" x2="520" y2="80" />
+                <text x="530" y="85">Menu Button</text>
+
+                <!-- View Button -->
+                <line x1="370" y1="140" x2="280" y2="80" />
+                <text x="150" y="85">View Button</text>
+
+                <!-- Left Bumper -->
+                <line x1="300" y1="60" x2="200" y2="20" />
+                <text x="80" y="25">Left Bumper</text>
+
+                <!-- Right Bumper -->
+                <line x1="500" y1="60" x2="600" y2="20" />
+                <text x="610" y="25">Right Bumper</text>
+            </svg>
         </div>
-        <div id="tooltip" class="tooltip"></div>
     </div>
-    <script src="index.js"></script>
 </body>
 </html>

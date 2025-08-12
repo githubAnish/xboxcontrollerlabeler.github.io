@@ -320,3 +320,7 @@ header p {
 .label-container:nth-child(even) {
     animation-delay: 0.2s;
 }
+
+#downloadButton {
+    margin-left: 1rem;
+}

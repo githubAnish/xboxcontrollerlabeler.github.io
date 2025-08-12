@@ -86,6 +86,11 @@ header p {
     z-index: 10;
     display: flex;
     align-items: center;
+    pointer-events: none; /* label & arrow positioning doesn't block clicks */
+}
+
+.label-input {
+    pointer-events: auto; /* but the input is still clickable */
 }
 
 /* Connecting lines */

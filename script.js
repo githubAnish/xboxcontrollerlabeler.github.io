@@ -69,40 +69,48 @@ function init() {
 
 // Position labels and draw connecting lines
 function positionLabelsAndLines() {
-    const controllerImage = document.getElementById('controllerImage');
-    const labelContainers = document.querySelectorAll('.label-container');
-    
-    labelContainers.forEach(container => {
-        const targetX = parseInt(container.getAttribute('data-target-x'));
-        const targetY = parseInt(container.getAttribute('data-target-y'));
-        const labelX = parseInt(container.getAttribute('data-label-x'));
-        const labelY = parseInt(container.getAttribute('data-label-y'));
-        
-        // Position the label container
-        container.style.left = labelX + '%';
-        container.style.top = labelY + '%';
-        
-        // Calculate line properties
-        const deltaX = targetX - labelX;
+    const container = document.querySelector('.controller-container');
+    const margin = 5; // % margin inside container
+
+    document.querySelectorAll('.label-container').forEach(label => {
+        let targetX = parseFloat(label.getAttribute('data-target-x'));
+        let targetY = parseFloat(label.getAttribute('data-target-y'));
+        let labelX = parseFloat(label.getAttribute('data-label-x'));
+        let labelY = parseFloat(label.getAttribute('data-label-y'));
+
+        // Clamp label so textbox stays inside margins
+        labelX = Math.min(100 - margin, Math.max(margin, labelX));
+        labelY = Math.min(100 - margin, Math.max(margin, labelY));
+
+        // Apply clamped position
+        label.style.left = `${labelX}%`;
+        label.style.top = `${labelY}%`;
+
+        const input = label.querySelector('.label-input');
+        const line = label.querySelector('.connector-line');
+        const arrow = label.querySelector('.arrow');
+
+        // Get textbox width in % of container
+        const containerWidth = container.offsetWidth;
+        const inputWidth = input.offsetWidth;
+        const widthPct = (inputWidth / containerWidth) * 100;
+
+        // Calculate delta between label edge and button
+        const deltaX = targetX - (labelX + widthPct / 2);
         const deltaY = targetY - labelY;
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-        
-        // Position and style the connecting line
-        const line = container.querySelector('.connector-line');
-        line.style.width = distance + '%';
+
+        // Set connector line from textbox edge to button
+        line.style.width = `${distance}%`;
         line.style.transform = `rotate(${angle}deg)`;
-        line.style.left = '0';
+        line.style.left = `${widthPct / 2}%`;
         line.style.top = '50%';
-        
-        // Position the arrow at the end of the line
-        const arrow = container.querySelector('.arrow');
-        const arrowOffsetX = (deltaX / distance) * distance;
-        const arrowOffsetY = (deltaY / distance) * distance;
-        
-        arrow.style.left = arrowOffsetX + '%';
-        arrow.style.top = arrowOffsetY + '%';
-        arrow.style.transform = `translate(-50%, -50%)`;
+
+        // Position arrow at tip
+        arrow.style.left = `${targetX - labelX}%`;
+        arrow.style.top = `${targetY - labelY}%`;
+        arrow.style.transform = 'translate(-50%, -50%)';
     });
 }
 

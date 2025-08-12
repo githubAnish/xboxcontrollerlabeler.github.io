@@ -331,23 +331,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupResponsiveLayout();
     setupKeyboardShortcuts();
 
-    document.getElementById('downloadButton').addEventListener('click', function () {
-        const controllerContainer = document.querySelector('.controller-container');
+    const downloadBtn = document.getElementById('downloadButton');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function () {
+            const container = document.querySelector('.controller-container');
 
-        html2canvas(controllerContainer, {
-            backgroundColor: null, // keeps background transparent
-            scale: 2 // higher resolution
-        }).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'controller-labels.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }).catch(err => {
-            console.error('Screenshot failed:', err);
-            showNotification('Failed to take screenshot.');
+            html2canvas(container, {
+                backgroundColor: '#1a1a1a', // match your page background
+                scale: 2
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'controller-labels.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('Screenshot failed:', err);
+                showNotification('Failed to take screenshot.');
+            });
         });
-    });
-    
+    }
+
     console.log('Xbox Controller Labeler initialized successfully');
 });
 
